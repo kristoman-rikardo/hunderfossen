@@ -3,62 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- Moderne font fra Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
-  <!-- Favicon -->
   <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8e6x5VdZAZyWbJra6qjUy1nFo9Wk2MqnevA&s" type="image/png"/>
   <title>Chat-demo</title>
   <style>
-    /* Fjern standardmargin og -padding */
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html, body {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
     }
-
     body {
-      /* Fullskjerms bakgrunnsbilde */
       background: url('https://hunderfossen.no/wp-content/uploads/2023/11/Foto_EmilSja%CC%8AstadNyeng_Hunderfossen20239of40-Sesongkort.jpg') no-repeat center center fixed;
       background-size: cover;
       position: relative;
     }
 
-    /* Teksten over pilen */
+    /* Tekst over pilen, justert til høyre */
     .chat-label {
       position: fixed;
-      left: 10px;
-      bottom: 50px;           /* Ligger 50px over nedre kant */
+      right: 30px;
+      bottom: 190px;       /* 150px pil + litt luft */
       color: #fff;
       font-size: 1rem;
       font-weight: 600;
-      pointer-events: none;    /* Så den ikke blokkerer klikk */
+      text-align: right;
+      pointer-events: none;
+      z-index: 20;
     }
 
-    /* SVG-container som strekker seg til 30px fra høyre og 30px fra bunn */
+    /* Nedskalert pil i nedre høyre hjørne */
     .arrow-container {
       position: fixed;
-      left: 0;
-      bottom: 0;
-      width: calc(100% - 30px);
-      height: calc(100% - 30px);
+      right: 30px;
+      bottom: 30px;
+      width: 150px;
+      height: 150px;
       pointer-events: none;
       z-index: 10;
     }
-
     .arrow-container svg {
       width: 100%;
       height: 100%;
     }
-
     .arrow-container path {
       stroke: #fff;
       stroke-width: 4;
       fill: none;
     }
-
     .arrow-container marker polygon {
       fill: #fff;
     }
@@ -69,20 +61,16 @@
   <!-- Tekst over pilen -->
   <div class="chat-label">Test chatbotten her</div>
 
-  <!-- Kurvet pil som peker mot punktet 30px opp og 30px til venstre for nedre høyre hjørne -->
+  <!-- Nedskalert kurvet pil -->
   <div class="arrow-container">
     <svg viewBox="0 0 100 100" preserveAspectRatio="none">
       <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-          <polygon points="0 0, 10 3.5, 0 7"/>
+        <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" />
         </marker>
       </defs>
-      <!-- 
-        Banen går fra (0,100) – nederst til venstre
-        via en kurve som gir en fin bue oppover og tilbake ned
-        til (100,100) – som nå tilsvarer 30px fra høyre og 30px fra bunn
-      -->
-      <path d="M0,100 C0,50 70,50 100,100" marker-end="url(#arrowhead)"/>
+      <!-- Fra nederste venstre av container til øvre høyre -->
+      <path d="M0,100 C0,50 70,50 100,0" marker-end="url(#arrowhead)"/>
     </svg>
   </div>
 
