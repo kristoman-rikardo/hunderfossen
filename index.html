@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Moderne font fra Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <!-- Favicon -->
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8e6x5VdZAZyWbJra6qjUy1nFo9Wk2MqnevA&s" type="image/png"/>
+  <title>Chat-demo</title>
+  <style>
+    /* Fjern standardmargin og -padding */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      /* Fullskjerms bakgrunnsbilde */
+      background: url('https://hunderfossen.no/wp-content/uploads/2023/11/Foto_EmilSja%CC%8AstadNyeng_Hunderfossen20239of40-Sesongkort.jpg') no-repeat center center fixed;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* Teksten over pilen */
+    .chat-label {
+      position: fixed;
+      left: 10px;
+      bottom: 50px;           /* Ligger 50px over nedre kant */
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      pointer-events: none;    /* Så den ikke blokkerer klikk */
+    }
+
+    /* SVG-container som strekker seg til 30px fra høyre og 30px fra bunn */
+    .arrow-container {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: calc(100% - 30px);
+      height: calc(100% - 30px);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .arrow-container svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .arrow-container path {
+      stroke: #fff;
+      stroke-width: 4;
+      fill: none;
+    }
+
+    .arrow-container marker polygon {
+      fill: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tekst over pilen -->
+  <div class="chat-label">Test chatbotten her</div>
+
+  <!-- Kurvet pil som peker mot punktet 30px opp og 30px til venstre for nedre høyre hjørne -->
+  <div class="arrow-container">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7"/>
+        </marker>
+      </defs>
+      <!-- 
+        Banen går fra (0,100) – nederst til venstre
+        via en kurve som gir en fin bue oppover og tilbake ned
+        til (100,100) – som nå tilsvarer 30px fra høyre og 30px fra bunn
+      -->
+      <path d="M0,100 C0,50 70,50 100,100" marker-end="url(#arrowhead)"/>
+    </svg>
+  </div>
+
+  <!-- Voiceflow-widget -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '680d18d40179ce004dd951bd' },
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production',
+            voice: {
+              url: "https://runtime-api.voiceflow.com"
+            }
+          });
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+
+</body>
+</html>
