@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="no">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
   <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8e6x5VdZAZyWbJra6qjUy1nFo9Wk2MqnevA&s" type="image/png"/>
@@ -14,31 +14,33 @@
       overflow: hidden;
     }
     body {
-      background: url('https://hunderfossen.no/wp-content/uploads/2023/11/Foto_EmilSja%CC%8AstadNyeng_Hunderfossen20239of40-Sesongkort.jpg') no-repeat center center fixed;
+      background: url('https://hunderfossen.no/wp-content/uploads/2023/11/Foto_EmilSja%CC%8AstadNyeng_Hunderfossen20239of40-Sesongkort.jpg')
+                  no-repeat center center fixed;
       background-size: cover;
       position: relative;
     }
 
-    /* Tekst over pilen, justert til høyre */
+    /* Label over pilen */
     .chat-label {
       position: fixed;
-      right: 30px;
-      bottom: 190px;       /* 150px pil + litt luft */
+      right: 30px;      /* 30px fra høyre */
+      bottom: 190px;    /* 190px fra bunn */
       color: #fff;
-      font-size: 1rem;
+      font-size: 1.2rem;
       font-weight: 600;
       text-align: right;
       pointer-events: none;
       z-index: 20;
     }
 
-    /* Nedskalert pil i nedre høyre hjørne */
+    /* Pil‐container */
     .arrow-container {
       position: fixed;
-      right: 30px;
-      bottom: 30px;
-      width: 150px;
-      height: 150px;
+      /* container ligger til venstre for både label og launcher */
+      right: 200px;     /* juster denne for å flytte pilen lenger til venstre/høyre */
+      bottom: 30px;     /* 30px fra bunn = samme som launcheren */
+      width: 150px;     /* pilens maksbredde */
+      height: 160px;    /* avstand mellom label (190px) og launcher (30px) */
       pointer-events: none;
       z-index: 10;
     }
@@ -61,16 +63,20 @@
   <!-- Tekst over pilen -->
   <div class="chat-label">Test chatbotten her</div>
 
-  <!-- Nedskalert kurvet pil -->
+  <!-- Kurvet pil som starter/ender på samme vertikale linje -->
   <div class="arrow-container">
-    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+    <svg viewBox="0 0 100 160" preserveAspectRatio="none">
       <defs>
         <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
-          <polygon points="0 0, 8 3, 0 6" />
+          <polygon points="0 0, 8 3, 0 6"/>
         </marker>
       </defs>
-      <!-- Fra nederste venstre av container til øvre høyre -->
-      <path d="M0,100 C0,50 70,50 100,0" marker-end="url(#arrowhead)"/>
+      <!--
+        M0,0           = øverste venstre
+        C50,0  50,160  = bue utover (x=50) og tilbake (x=50)
+        0,160          = nederste venstre
+      -->
+      <path d="M0,0 C50,0 50,160 0,160" marker-end="url(#arrowhead)"/>
     </svg>
   </div>
 
