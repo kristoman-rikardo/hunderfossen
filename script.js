@@ -1,4 +1,4 @@
-// Dette er Dalai Solutions AS sin eiendom, på leie til Holmenkollen Skifestival AS. Bruk utover avtale er ikke tillat.    
+// Dette er Dalai Solutions AS sin eiendom, på leie til Hunderfossen Familiepark AS. Bruk utover avtale er ikke tillat.    
 let widgetDescription = " ";
 let inputPlaceholder = " ";
 let widgetStyleSheet = " ";
